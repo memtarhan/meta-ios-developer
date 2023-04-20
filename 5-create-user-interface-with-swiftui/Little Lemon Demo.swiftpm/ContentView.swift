@@ -4,11 +4,11 @@ struct ContentView: View {
 //    @State var showLogo = true
 //    @ObservedObject var myClass = MyClass()
 
+    @State var inputValue: String = ""
+    @State var name: String = ""
+
     var body: some View {
         let sophisticatedString = try! AttributedString(markdown: "Sign up to our Newsletter and get **30%** off!")
-
-        @State var inputValue = ""
-        @State var name = ""
 
         VStack {
             VStack {
@@ -27,7 +27,7 @@ struct ContentView: View {
                     .fixedSize(horizontal: false, vertical: true)
             }
             Spacer()
-            
+
             VStack {
                 TextField("Type Your Name", text: $inputValue)
                     .textFieldStyle(.roundedBorder)
@@ -35,8 +35,17 @@ struct ContentView: View {
             .padding()
 
             Form {
-                Text("Your name is ")
-                TextField("Enter your name", text: $name)
+                Text("Your name is \(name)")
+                TextField("Enter your name", text: $name, onEditingChanged: { edited in
+                    print("edited ? \(edited)")
+                })
+                .onChange(of: name, perform: { newValue in
+                    print(newValue)
+                })
+                .onSubmit {
+                    print("Submitted")
+                }
+                .padding()
             }
 
             Spacer()
