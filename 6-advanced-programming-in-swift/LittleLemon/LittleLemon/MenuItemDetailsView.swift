@@ -9,7 +9,15 @@ import SwiftUI
 
 struct MenuItemDetailsView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            VStack {
+                Text("Hello, World!")
+                NavigationLink(destination: Text("Destination")) {
+                    Text("Navigate")
+                }
+            }
+            .navigationTitle("Details")
+        }
     }
 }
 

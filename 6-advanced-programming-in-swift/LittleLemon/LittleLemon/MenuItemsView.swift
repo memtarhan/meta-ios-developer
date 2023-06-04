@@ -25,6 +25,8 @@ let menuData = [
 ]
 
 struct MenuItemsView: View {
+    @State private var shouldDisplayFilters = false
+
     let data = (1 ... 10).map { "Item \($0)" }
 
     private let menu = menuData
@@ -41,23 +43,40 @@ struct MenuItemsView: View {
                 Section(menuSection.title) {
                     LazyVGrid(columns: columns, spacing: 20) {
                         ForEach(menuSection.items) { item in
-                            VStack {
-                                ZStack {
-                                    Image("Little Lemon logo")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                }
-                                .frame(height: 80)
+                            ZStack {
+                                VStack {
+                                    ZStack {
+                                        Image("Little Lemon logo")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                    }
+                                    .frame(height: 80)
 
-                                Text(item.title)
+                                    Text(item.title)
+                                        .font(.headline)
+                                }
+                                NavigationLink(destination: MenuItemDetailsView()) {
+                                    EmptyView()
+                                }
+                                .opacity(0.0)
                             }
                         }
                     }
                     .padding(.vertical)
                 }
+                .listRowSeparator(.hidden)
             }
             .listStyle(.plain)
             .navigationTitle("Menu")
+            .navigationBarItems(trailing: Button(action: {
+                shouldDisplayFilters = true
+            }) {
+                Image(systemName: "line.3.horizontal.decrease.circle.fill")
+                    .imageScale(.large)
+            })
+            .popover(isPresented: $shouldDisplayFilters) {
+                MenuItemsOptionView()
+            }
         }
     }
 }

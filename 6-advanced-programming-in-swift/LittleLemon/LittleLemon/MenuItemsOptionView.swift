@@ -7,9 +7,82 @@
 
 import SwiftUI
 
+
+enum Category: String, CaseIterable, Identifiable {
+    case food
+    case drink
+    case dessert
+
+    var id: Self {
+        self
+    }
+
+    var title: String {
+        rawValue.capitalized
+    }
+}
+
+enum SortType: CaseIterable, Identifiable {
+    case popularity
+    case price
+    case alphabetical
+
+    var id: Self {
+        self
+    }
+
+    var title: String {
+        switch self {
+        case .popularity:
+            return "Most Popular"
+        case .price:
+            return "Price $-$$$"
+        case .alphabetical:
+            return "A-Z"
+        }
+    }
+}
+
+struct CategoriesSectionData: Identifiable {
+    let id = UUID()
+    let title = "SELECTED CATEGORIES"
+    let items = Category.allCases
+}
+
+struct SortBySectionData: Identifiable {
+    let id = UUID()
+    let title = "SORT BY"
+    let items = SortType.allCases
+}
+
 struct MenuItemsOptionView: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+
+    private var categories = CategoriesSectionData()
+    private var sortBy = SortBySectionData()
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            List {
+                Section(categories.title) {
+                    ForEach(categories.items) { item in
+                        Text(item.title)
+                    }
+                }
+                Section(sortBy.title) {
+                    ForEach(sortBy.items) { item in
+                        Text(item.title)
+                    }
+                }
+            }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Done") {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }
+                }
+            }
+        }
     }
 }
 
