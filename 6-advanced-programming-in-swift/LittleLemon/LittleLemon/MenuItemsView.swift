@@ -7,29 +7,10 @@
 
 import SwiftUI
 
-struct MenuItem: Identifiable {
-    let id = UUID()
-    let title: String
-}
-
-struct MenuSection: Identifiable {
-    let id = UUID()
-    let title: String
-    let items: [MenuItem]
-}
-
-let menuData = [
-    MenuSection(title: "Food", items: (1 ... 10).map { MenuItem(title: "Food \($0 + 1)") }),
-    MenuSection(title: "Drinks", items: (1 ... 10).map { MenuItem(title: "Drink \($0 + 1)") }),
-    MenuSection(title: "Dessert", items: (1 ... 10).map { MenuItem(title: "Dessert \($0 + 1)") }),
-]
-
 struct MenuItemsView: View {
+    @ObservedObject var viewModel = MenuViewViewModel()
+
     @State private var shouldDisplayFilters = false
-
-    let data = (1 ... 10).map { "Item \($0)" }
-
-    private let menu = menuData
 
     let columns = [
         GridItem(.flexible()),
@@ -39,7 +20,7 @@ struct MenuItemsView: View {
 
     var body: some View {
         NavigationStack {
-            List(menu) { menuSection in
+            List(viewModel.menu) { menuSection in
                 Section(menuSection.title) {
                     LazyVGrid(columns: columns, spacing: 20) {
                         ForEach(menuSection.items) { item in
@@ -55,7 +36,7 @@ struct MenuItemsView: View {
                                     Text(item.title)
                                         .font(.headline)
                                 }
-                                NavigationLink(destination: MenuItemDetailsView()) {
+                                NavigationLink(destination: MenuItemDetailsView(item: .constant(item))) {
                                     EmptyView()
                                 }
                                 .opacity(0.0)

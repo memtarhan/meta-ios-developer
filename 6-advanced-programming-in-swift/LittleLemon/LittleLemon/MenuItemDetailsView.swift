@@ -8,21 +8,18 @@
 import SwiftUI
 
 struct MenuItemDetailsView: View {
+    @Binding var item: MenuItem
+
     var body: some View {
-        NavigationStack {
-            VStack {
-                Text("Hello, World!")
-                NavigationLink(destination: Text("Destination")) {
-                    Text("Navigate")
-                }
-            }
-            .navigationTitle("Details")
+        VStack {
+            Text(item.title)
         }
+        .navigationTitle("Details")
     }
 }
 
 struct MenuItemDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        MenuItemDetailsView()
+        MenuItemDetailsView(item: .constant(MenuItem.sample))
     }
 }
