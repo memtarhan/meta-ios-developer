@@ -11,6 +11,7 @@ struct MenuItemsView: View {
     @ObservedObject var viewModel = MenuViewViewModel()
 
     @State private var shouldDisplayFilters = false
+    @State var shouldPresentContactMainView = false
 
     let columns = [
         GridItem(.flexible()),
@@ -31,15 +32,17 @@ struct MenuItemsView: View {
                                             .resizable()
                                             .aspectRatio(contentMode: .fit)
                                     }
-                                    .frame(height: 80)
+                                    .frame(height: 100)
 
                                     Text(item.title)
                                         .font(.headline)
                                 }
-                                NavigationLink(destination: MenuItemDetailsView(item: .constant(item))) {
-                                    EmptyView()
-                                }
-                                .opacity(0.0)
+                            }
+                            .onTapGesture {
+                                shouldPresentContactMainView = true
+                            }
+                            .navigationDestination(isPresented: $shouldPresentContactMainView) {
+                                MenuItemDetailsView(item: .constant(item))
                             }
                         }
                     }
