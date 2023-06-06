@@ -71,3 +71,15 @@ for (var i = 0; i<arrOfKeys.length; i++) {
 200
 red
  */
+
+// Object Methods
+var car2 = {}
+car2.color = "red"
+
+car2.turnKey = function () {
+    console.log("engine running")
+}
+
+car2.turnKey()
+
+console.log(typeof(car2))
