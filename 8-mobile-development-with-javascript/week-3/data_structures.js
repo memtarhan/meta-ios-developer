@@ -10,7 +10,12 @@ function appendIndex(fruit, index) {
 3. pear
 */
 
+console.log(fruits.pop());
+
 fruits.forEach(appendIndex);
+
+console.log(1 == 2);
+console.log("A" === "B");
 
 const veggies = ['onion', 'garlic', 'potato'];
 veggies.forEach( function(veggie, index) {

@@ -32,3 +32,7 @@ function calculate(initialValue, incrementValue) {
 }
 
 console.log(calculate(two, one))
+
+var result;
+console.log(result);
+result = 7;
