@@ -74,3 +74,41 @@ It provides a concise and readable syntax for iteration.
 
 It can be used to perform operations on the values of an iterable object.
  */
+
+// Task 1
+var dairy = ['cheese', 'sour cream', 'milk', 'yogurt', 'ice cream', 'milkshake']
+function logDairy() {
+    for (item of dairy) {
+        console.log(item);
+    }
+}
+
+// logDairy();
+
+// Task 2
+const animal = {
+    canJump: true
+};
+
+const bird = Object.create(animal);
+bird.canFly = true;
+bird.hasFeathers = true;
+
+function birdCan() {
+    for (const value of Object.entries(bird)) {
+        console.log(value[0] + ": " + value[1]);
+    }
+}
+
+birdCan();
+
+// Task 3
+bird.canJump = true;
+function animalCan() {
+    for (const value of Object.entries(bird)) {
+        console.log(value[0] + ": " + value[1]);
+    }
+}
+
+// animalCan();
+
