@@ -1,11 +1,11 @@
-import './App.css';
-
-function Header() {
-    return <h1>Hello world! </h1>
-}
+import Heading from "./Heading";
 
 function App() {
-    return <Header/>
+    return (
+        <div className="App">
+            <Heading firstName="Bob" lastName="Doe" message="Hello World" />
+        </div>
+    );
 }
 
 export default App;

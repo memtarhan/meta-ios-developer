@@ -1,8 +1,11 @@
-function Heading() {
-    let title = "This is some heading text"
+function Heading(props) {
     return (
-        <h1>{title}</h1>
+        <div>
+            <h1>Hello, {props.firstName} {props.lastName}</h1>
+            <h2>{props.message}</h2>
+        </div>
+
     )
 }
 
-export default Heading
+export default Heading;
