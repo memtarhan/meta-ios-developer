@@ -41,3 +41,10 @@
   font-weight: bold;
   line-height: 20px;
 }
+
+.card {
+  border: black solid 1px;
+  border-radius: 10px;
+  width: 20%;
+  padding: 1em;
+}
