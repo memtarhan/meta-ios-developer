@@ -142,3 +142,33 @@ function count2(food) {
     console.log(food.length)
 }
 count2("Burgers", "Fries", null);
+
+// console.log((123).toString());
+//
+// class Car {}
+//
+// var car = new Car();
+// car.color = "Red";
+// Car.prototype.color = "blue";
+// Car.prototype(Color, "Red");
+
+for (var i = 0; i < 10; i++) {
+    console.log(i);
+}
+for (var i = 0; i ++; i < 10) {
+    console.log(i);
+}
+
+var a = new String("Hello");
+var b = "Hello";
+
+if (a === b) {
+    // alert("Same");
+    console.log("Same");
+
+} else {
+    // alert("Different");
+    console.log("Different");
+}
+
+console.log(10 + 1 + "3");
