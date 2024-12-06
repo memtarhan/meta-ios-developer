@@ -1,8 +1,9 @@
-import MyButton from "./MyButton";
+// import MyButton from "./MyButton";
+import ModeToggler from "./ModeToggler";
 
 function App() {
   return (
-    <MyButton />
+    <ModeToggler />
   );
 }
 
