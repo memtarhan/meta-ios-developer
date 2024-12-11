@@ -4,13 +4,14 @@ import { View, StyleSheet } from 'react-native';
 import LittleLemonHeader from './components/LittleLemonHeader';
 import LittleLemonFooter from './components/LittleLemonFooter';
 import MenuItems from './components/MenuItemsSectioned';
+import FeedbackForm from "./components/FeedbackForm";
 
 export default function App() {
     return (
         <>
             <View style={styles.container}>
                 <LittleLemonHeader />
-                <MenuItems />
+                <FeedbackForm />
             </View>
             <View style={styles.footerContainer}>
                 <LittleLemonFooter />
