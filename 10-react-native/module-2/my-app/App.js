@@ -3,7 +3,8 @@ import {View, StyleSheet} from 'react-native';
 
 import LittleLemonHeader from './components/LittleLemonHeader';
 import LittleLemonFooter from './components/LittleLemonFooter';
-import MenuItems from './components/MenuItems';
+// import MenuItems from './components/MenuItems';
+import MenuItems from './components/MenuItemsSectioned';
 
 export default function App() {
     return (
