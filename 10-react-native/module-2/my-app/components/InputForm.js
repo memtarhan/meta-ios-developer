@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {ScrollView, StyleSheet, Text, TextInput} from 'react-native';
+import {Alert, ScrollView, StyleSheet, Text, TextInput} from 'react-native';
 
 /*
 ------ placeholder
@@ -19,6 +19,24 @@ As the name suggests, this prop limits the maximum number of characters that can
 
 ------ keyboardType
 number-pad, decimal-pad, numeric, email-address, phone-pad, url, and other platform-specific keyboard types.
+ */
+
+/*
+------- METHODS
+
+-- onFocus
+
+This call-back method is called when the text input is focused.
+
+-- onBlur
+
+This call-back method is called when the text input is blurred or loses focus
+
+-- clearButtonMode
+
+This is an exciting prop that is available only on iOS. It displays a clear button on the right side of the text view.
+This is only supported on single-line text inputs and iOS.
+The value is set to never by default and accepts other values such as always, unless-editing, and while-editing.
  */
 const InputForm = () => {
     // declare the variables
@@ -42,6 +60,9 @@ const InputForm = () => {
                 value={firstName}
                 onChangeText={onChangeFirstName}
                 placeholder={'First Name'}
+                onFocus={() => {Alert.alert("First name is focussed")}}
+                onBlur={() => {Alert.alert("First name is blurred")}}
+                clearButtonMode={"always"}
             />
             <TextInput
                 style={styles.input}
@@ -107,4 +128,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default FeedbackForm;
+export default InputForm;
