@@ -12,9 +12,9 @@ export default function App() {
                 <LittleLemonHeader/>
                 <MenuItems/>
             </View>
-            <View style={styles.footerContainer}>
-                <LittleLemonFooter/>
-            </View>
+            {/*<View style={styles.footerContainer}>*/}
+            {/*    <LittleLemonFooter/>*/}
+            {/*</View>*/}
         </>
     );
 }
