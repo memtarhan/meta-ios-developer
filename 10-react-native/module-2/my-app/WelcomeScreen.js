@@ -3,21 +3,13 @@ import {
     Image,
     StyleSheet,
     Text,
-    useColorScheme,
+    useWindowDimensions,
 } from 'react-native';
 
 const Welcome = () => {
-    const colorScheme = useColorScheme();
-
+    const window = useWindowDimensions();
     return (
-        <ScrollView
-            style={[
-                styles.container,
-                colorScheme === 'light'
-                    ? {backgroundColor: '#fff'}
-                    : {backgroundColor: '#333333'},
-            ]}>
-            {' '}
+        <ScrollView style={styles.container}>
             <Image
                 style={styles.logo}
                 source={require('./img/sample_image.jpg')}
@@ -25,7 +17,13 @@ const Welcome = () => {
                 accessible={true}
                 accessibilityLabel={'Little Lemon Logo'}
             />
-            <Text style={styles.regular}>Color Scheme: {colorScheme}{' '} </Text>
+            <Text style={styles.title}>
+                Little Lemon, your local Mediterranean Bistro
+            </Text>
+            <Text style={styles.regular}>Window Dimensions</Text>
+            <Text style={styles.regular}>Height: {window.height}</Text>
+            <Text style={styles.regular}>Width: {window.width}</Text>
+            <Text style={styles.regular}>Font scale: {window.fontScale}</Text>
         </ScrollView>
     );
 };
@@ -34,15 +32,22 @@ const styles = StyleSheet.create({
     logo: {
         height: 100,
         width: 300,
+        resizeMode: 'contain',
     },
     container: {
         flex: 1,
         padding: 24,
         marginTop: 25,
+        backgroundColor: '#fff',
     },
-    regular: {
-        fontSize: 18,
+
+    title: {
+        marginTop: 16,
+        paddingVertical: 10,
+        color: '#333333',
         textAlign: 'center',
+        fontSize: 20,
+        fontWeight: 'bold',
     },
 });
 
