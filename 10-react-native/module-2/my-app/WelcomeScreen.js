@@ -1,56 +1,49 @@
-import {ScrollView, View, Text, StyleSheet, Image} from 'react-native';
+import {
+    ScrollView,
+    Image,
+    StyleSheet,
+    Text,
+    useColorScheme,
+} from 'react-native';
 
-export default function WelcomeScreen() {
+const Welcome = () => {
+    const colorScheme = useColorScheme();
+
     return (
-        <ScrollView style={styles.container}>
-            <View style={styles.headerWrapper}>
-                <Image
-                    style={styles.image}
-                    source={require('./img/sample_image.jpg')}
-                    resizeMode="cover"
-                    accessible={true}
-                    accessibilityLabel={'Little Lemon Logo'}
-                />
-
-                <Text style={styles.headerText}>Little Lemon</Text>
-            </View>
-            <Text style={styles.regularText}>
-                Little Lemon is a charming neighborhood bistro that serves simple food
-                and classic cocktails in a lively but casual environment. We would love
-                to hear your experience with us!
-            </Text>
+        <ScrollView
+            style={[
+                styles.container,
+                colorScheme === 'light'
+                    ? {backgroundColor: '#fff'}
+                    : {backgroundColor: '#333333'},
+            ]}>
+            {' '}
+            <Image
+                style={styles.logo}
+                source={require('./img/sample_image.jpg')}
+                resizeMode="center"
+                accessible={true}
+                accessibilityLabel={'Little Lemon Logo'}
+            />
+            <Text style={styles.regular}>Color Scheme: {colorScheme}{' '} </Text>
         </ScrollView>
     );
-}
+};
 
 const styles = StyleSheet.create({
+    logo: {
+        height: 100,
+        width: 300,
+    },
     container: {
         flex: 1,
+        padding: 24,
+        marginTop: 25,
     },
-    headerWrapper: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        margin: 10,
-    },
-    headerText: {
-        paddingRight: 10,
-        paddingLeft: 20,
-        paddingTop: 30,
-        paddingBottom: 10,
-        fontSize: 30,
-        color: '#EDEFEE',
+    regular: {
+        fontSize: 18,
         textAlign: 'center',
-    },
-    regularText: {
-        fontSize: 24,
-        padding: 20,
-        marginVertical: 8,
-        color: '#EDEFEE',
-        textAlign: 'center',
-    },
-    image: {
-        width: 100,
-        height: 100,
-        borderRadius: 20,
     },
 });
+
+export default Welcome;
